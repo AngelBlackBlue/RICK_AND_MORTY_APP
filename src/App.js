@@ -5,38 +5,34 @@ import style from './components/FondoHTML/FondoHTML.module.css'
 import { useState } from 'react';
 import axios from 'axios';
 
-// const example = {
-//    id: 1,
-//    name: 'Rick Sanchez',
-//    status: 'Alive',
-//    species: 'Human',
-//    gender: 'Male',
-//    origin: {
-//       name: 'Earth (C-137)',
-//       url: 'https://rickandmortyapi.com/api/location/1',
-//    },
-//    image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-// };
+
+
 
 function App() {
-   const [characters, setCharacters] = useState([]);
-   // const onSearch = ()=> {setCharacters([...characters, example])};
    
+   const [characters, setCharacters] = useState([]);
+   const onClose = (id) =>{setCharacters(characters.filter(character => character.id !== Number(id)))}
+   const repeatedObject = (id) => { return !!(characters.find(character =>  character.id === Number(id))) }
    const onSearch = (id) => {
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
+      
+      if (repeatedObject(id)) { window.alert("Ya existe ese personaje"); return };
+      if (!id) { window.alert("!Digite ID!"); return };
+
+    axios(`https://rickandmortyapi.com/api/character/${id}`)
+      .then(({data}) => {
+         if(data.name) {
+            setCharacters((oldChars) => [...oldChars, data])
          } else {
-            window.alert('¡No hay personajes con este ID!');
+            window.alert("No existe un personaje con ese ID")
          }
-      });
-   }
+      })
+      .catch((error) => {
+         console.log(error)
+         window.alert("No existe un personaje con ese ID ERROR")
+      })
 
-   const onClose = (id) =>{
-      const charactersFilter = characters.filter(character => character.id !== Number(id));
-      setCharacters(charactersFilter)
-   }
-
+   } 
+   
    return (
       <div className='App'>
          <div className={style.fondo}>
