@@ -1,10 +1,11 @@
-import './App.css';
+
 import Cards from './components/Cards/Cards.jsx';
 import Nav from './components/Nav/Nav.jsx'
 import style from './components/FondoHTML/FondoHTML.module.css'
 import { useState } from 'react';
 import axios from 'axios';
-
+import { Routes, Route } from 'react-router-dom';
+import Detail from './components/Detail/Detail';
 
 
 
@@ -27,7 +28,6 @@ function App() {
          }
       })
       .catch((error) => {
-         console.log(error)
          window.alert("No existe un personaje con ese ID ERROR")
       })
 
@@ -37,7 +37,11 @@ function App() {
       <div className='App'>
          <div className={style.fondo}>
             <Nav onSearch={onSearch} />
-            <Cards characters={characters} onClose={onClose}/>
+            <Routes>
+               <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/> 
+               <Route path='/about' />
+               <Route path='/detail/:id' element={<Detail/>} />
+            </Routes>  
          </div>
       </div>
    );
