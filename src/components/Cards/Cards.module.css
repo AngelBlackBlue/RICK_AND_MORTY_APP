@@ -12,6 +12,8 @@
     grid-row-gap: 0px;
     width: 80%;
     margin: auto; 
-    
+    gap: 15px;
+    /* height: 100vh;
+     */
         
 }

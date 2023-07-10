@@ -1,4 +1,3 @@
-
 import Cards from './components/Cards/Cards.jsx';
 import Nav from './components/Nav/Nav.jsx'
 import style from './components/FondoHTML/FondoHTML.module.css'
@@ -6,8 +5,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import Detail from './components/Detail/Detail';
-
-
+import Form from './components/Form/Form.jsx';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
 
 function App() {
    
@@ -33,18 +33,41 @@ function App() {
 
    } 
    
+   const location = useLocation();
+
+   const navigate = useNavigate();
+   const [access, setAccess] = useState(false);
+   const simEmail = 'angel.blackblue@hotmail.com';
+   const simPassword = 'angel23';
+
+   const login = (userData)=> {
+      if (userData.password === simPassword && userData.email === simEmail) {
+         setAccess(true);
+         navigate('/home');
+      }
+
+   }
+
+   useEffect(() => {
+      !access && navigate('/');
+   }, [access]);
+
    return (
-      <div className='App'>
+         
          <div className={style.fondo}>
-            <Nav onSearch={onSearch} />
+            { location.pathname === '/' ? null : <Nav onSearch={onSearch} />}
+            <main className={style.main}>
             <Routes>
+               <Route path='/' element={<Form login={login}/>}/>
                <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/> 
-               <Route path='/about' />
-               <Route path='/detail/:id' element={<Detail/>} />
-            </Routes>  
+               <Route path='/about'/>
+               <Route path='/detail/:id' element={<Detail/>}/>
+            </Routes> 
+            </main> 
          </div>
-      </div>
+         
    );
+   
 }
 
 export default App;

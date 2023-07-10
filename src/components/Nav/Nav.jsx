@@ -12,6 +12,9 @@ export default function Nav({onSearch}) {
          <button className={style.myButton}>
             <NavLink to={'/about'} className={style.navLink} >About</NavLink>
          </button>
+         <button className={style.myButton}>
+            <NavLink to={'/'} className={style.navLink} >Log out</NavLink>
+         </button>
          <SearchBar onSearch={onSearch}/>
       </div>
    );

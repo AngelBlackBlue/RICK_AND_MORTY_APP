@@ -1,24 +1,26 @@
 .divContainer{
-    background: blueviolet;
+    background: rgb(80, 233, 10);
     width: 10rem; 
-    font-size: 50%;
     padding: 10px;
-    margin: 10px;
     border-radius: 20px;
     box-shadow: 0px 1px 15px 6px rgba(0,0,0,0.46);
-    -webkit-box-shadow: 0px 1px 15px 6px rgba(0,0,0,0.46);
+    -webkit-box-shadow: 0px 1px 15px 6px rgba(31,222,50,0.75);
     -moz-box-shadow: 0px 1px 15px 6px rgba(0,0,0,0.46);
-    text-shadow: 0px 4px 12px rgba(0,0,0,1);
+   
     display: flex;
     flex-direction: column; 
-    
-    
+    text-align: center;
+    position: relative;
+ 
 }
 
 .Button{
-             
-    width: 15%;
-    background-color: rgb(30, 49, 221);
+    position: absolute;   
+    z-index: 30;   
+    right: 7px;   
+    width: 30px;
+    height: 30px;
+    background-color: rgb(16, 73, 40);
     border-radius: 15px;
     color: white;
     cursor:pointer;
@@ -29,13 +31,15 @@
 }
 
 .imagen{
-    margin-top: 10px;
+    width: 150px;
+    height: 150px;
     transition: 1s;
     border-radius: 10px;
     filter: saturate(234%);
     -webkit-filter: saturate(234%);
     -moz-filter: saturate(234%);
     cursor:pointer;
+    
 }
 
 .imagen:hover{
@@ -47,3 +51,11 @@
     -webkit-transform: rotate(360deg);
 }
 
+
+.nameDiv{
+    
+    font-size: 50%;
+    color: white;
+    text-decoration:none;
+    /* text-shadow: 0px 4px 12px rgba(0,0,0,1); */
+}
