@@ -39,7 +39,7 @@ const Form = ({login}) => {
               <div className={style.contenedor}>
                     <label className={style.labels}>Email</label>
                     <input name='email' placeholder="Ingrese su email...." type="email" value={userData.email} onChange={handleChange} className= {style.inputs}/>
-                    <label htmlFor="password" className={style.labels}>Password</label>
+                    <label className={style.labels}>Password</label>
                     <input name='password' placeholder="Digite su clave..." type="password" value={userData.password} onChange={handleChange}    className={errors.password && style.warning}/>
                               
                   <div className={style.buttonDiv}>
