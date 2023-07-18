@@ -8,12 +8,16 @@ import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form.jsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
+import Favorites from './components/Favorites/Favorites.jsx'
 
 function App() {
    
    const [characters, setCharacters] = useState([]);
+   
    const onClose = (id) =>{setCharacters(characters.filter(character => character.id !== Number(id)))}
+   
    const repeatedObject = (id) => { return !!(characters.find(character =>  character.id === Number(id))) }
+  
    const onSearch = (id) => {
       
       if (repeatedObject(id)) { window.alert("Ya existe ese personaje"); return };
@@ -38,7 +42,7 @@ function App() {
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
    const simEmail = 'angel.blackblue@hotmail.com';
-   const simPassword = 'angel23';
+   const simPassword = 'angel123';
 
    const login = (userData)=> {
       if (userData.password === simPassword && userData.email === simEmail) {
@@ -55,13 +59,14 @@ function App() {
    return (
          
          <div className={style.fondo}>
-            { location.pathname === '/' ? null : <Nav onSearch={onSearch} />}
+            { location.pathname === '/' ? null : <Nav onSearch={onSearch} setAccess={setAccess}/>} 
             <main className={style.main}>
             <Routes>
                <Route path='/' element={<Form login={login}/>}/>
                <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/> 
                <Route path='/about'/>
                <Route path='/detail/:id' element={<Detail/>}/>
+               <Route path='/favorites' element={<Favorites/>}/>
             </Routes> 
             </main> 
          </div>
@@ -71,3 +76,4 @@ function App() {
 }
 
 export default App;
+

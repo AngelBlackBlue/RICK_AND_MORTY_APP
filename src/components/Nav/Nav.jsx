@@ -1,9 +1,17 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
 import style from './Nav.module.css'
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom'; 
 
-export default function Nav({onSearch}) {
+export default function Nav({onSearch, setAccess}, ) { 
+   
+   const navigate = useNavigate();
+
+   const handleLogOut = () => {
+      setAccess(false);
+      navigate('/');
+   };
+    
    return (
       <div className={style.nav} >
          <button className={style.myButton}>
@@ -13,9 +21,12 @@ export default function Nav({onSearch}) {
             <NavLink to={'/about'} className={style.navLink} >About</NavLink>
          </button>
          <button className={style.myButton}>
-            <NavLink to={'/'} className={style.navLink} >Log out</NavLink>
+            <NavLink to={'/favorites'} className={style.navLink} >Favorites</NavLink>
          </button>
-         <SearchBar onSearch={onSearch}/>
+            <SearchBar onSearch={onSearch}/>
+         <button className={style.myButton} onClick={handleLogOut} >Log out</button> 
       </div>
    );
 }
+
+//
