@@ -1,28 +1,59 @@
-import { connect } from "react-redux"
+import { connect, useDispatch } from "react-redux"
 import Card from "../Card/Card";
 import style from '../Cards/Cards.module.css'
-
+import { filterCards, orderCards } from "../../redux/actions";
+import { useState } from "react";
+import style01 from './Favorite.module.css'
 
 const Favorites = ({myFavorites}) => { 
 
-    return(
+    const [aux, setAux] = useState(false);
 
-         <div className={style.div}>
-            {
-              myFavorites?.map(({id, name, image}) => {
-                return (
-                   <Card 
-                       key={id}
-                       id={id}
-                       name={name}
-                       image={image}
-                    />
-                )
-             }
-             
-          )
-            }
-         </div>
+    const dispatch = useDispatch();
+
+    const handleOrder = (event)=> {
+        dispatch(orderCards(event.target.value))
+        setAux(!aux);
+
+    };
+
+    const handleFilter = (event)=> {
+        dispatch(filterCards(event.target.value))
+    };
+
+
+
+    return(
+        <div>
+            <div className={style01.fistDiv}>
+               <select onChange={handleOrder}>
+                 <option value="A" >Ascendente</option>
+                 <option value="D" >Descendente</option>
+               </select>
+               <select onChange={handleFilter}> 
+                 <option value="Male"  >Male</option>
+                 <option value="Female" >Female</option>
+                 <option value="Genderless" >Genderless</option>
+                 <option value="unknown" >unknown</option>
+               </select>
+            </div>
+     
+            <div className={style.div}>
+                {
+                  myFavorites?.map(({id, name, image, gender}) => {
+                    return (
+                       <Card 
+                           key={id}
+                           id={id}
+                           name={name}
+                           image={image}
+                        />
+                    )
+                  })
+                }
+            </div>
+        </div>
+
     );
 
 };

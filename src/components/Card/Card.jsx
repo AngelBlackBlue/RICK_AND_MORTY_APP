@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
 
 // export default function Card({id, name, status, species, gender, origin, image, onClose}) {
-const  Card = ({id, name, image, onClose, addFav, removeFav, myFavorites}) => {
+const  Card = ({id, name, image, gender, onClose, addFav, removeFav, myFavorites}) => {
 
    const [ isFav, setIsFav ] = useState(false);
 
@@ -15,7 +15,7 @@ const  Card = ({id, name, image, onClose, addFav, removeFav, myFavorites}) => {
          removeFav(id);
       } else {
          setIsFav(true);
-         addFav({id, name, image});
+         addFav({id, name, image, gender});
       }
    };
 

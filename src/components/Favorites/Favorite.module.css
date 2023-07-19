@@ -1,0 +1,8 @@
+.fistDiv{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  /* margin-bottom: 50px; */
+  padding-bottom: 50px;
+}
