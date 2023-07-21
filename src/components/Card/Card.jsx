@@ -29,13 +29,13 @@ const  Card = ({id, name, image, gender, onClose, addFav, removeFav, myFavorites
 
    return (
       <div className={style.divContainer}>
-         <button onClick={handleFavorite}>{isFav ? '❤️' : '🤍'}</button>       
+         <button onClick={handleFavorite} className={style.kokoro}>{isFav ? '❤️' : '🤍'}</button>       
          <button onClick={()=>{onClose(id)}} className={style.Button}>X</button>
          <div>
             <img src={image} alt='' className={style.imagen}/>
          </div>
-         <div className={style.nameDiv}>
-           <Link to={`/detail/${id}`} > <h2>{name}</h2> </Link>
+         <div >
+           <Link to={`/detail/${id}`} className={style.nameDiv}> <h2 >{name}</h2> </Link>
          </div>
       </div>
    );

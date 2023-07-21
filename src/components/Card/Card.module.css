@@ -55,7 +55,19 @@
 .nameDiv{
     
     font-size: 50%;
-    color: white;
+    color: rgb(16, 73, 40);;
     text-decoration:none;
-    /* text-shadow: 0px 4px 12px rgba(0,0,0,1); */
+    text-shadow: 0px 4px 12px rgba(0,0,0,1);
 }
+
+
+.kokoro{
+  border: none;
+  background: none;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 30;
+  cursor: pointer;
+}
+  

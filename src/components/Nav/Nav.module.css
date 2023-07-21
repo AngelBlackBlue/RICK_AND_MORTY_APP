@@ -31,8 +31,11 @@
     font-size:19px;
     color:#ffffff; 
     text-decoration:none;
-	
-
 }
 
+.imgLogo {
+    width: 120px;
+    height: auto;
+    padding-right: 250px;
+}
 
