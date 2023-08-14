@@ -5,17 +5,17 @@ import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
 
 // export default function Card({id, name, status, species, gender, origin, image, onClose}) {
-const  Card = ({id, name, image, gender, onClose, addFav, removeFav, myFavorites}) => {
+const Card = ({ id, name, image, gender, onClose, addFav, removeFav, myFavorites }) => {
 
-   const [ isFav, setIsFav ] = useState(false);
+   const [isFav, setIsFav] = useState(false);
 
    const handleFavorite = () => {
-      if (isFav){
+      if (isFav) {
          setIsFav(false);
          removeFav(id);
       } else {
          setIsFav(true);
-         addFav({id, name, image, gender});
+         addFav({ id, name, image, gender });
       }
    };
 
@@ -29,13 +29,13 @@ const  Card = ({id, name, image, gender, onClose, addFav, removeFav, myFavorites
 
    return (
       <div className={style.divContainer}>
-         <button onClick={handleFavorite} className={style.kokoro}>{isFav ? '❤️' : '🤍'}</button>       
-         <button onClick={()=>{onClose(id)}} className={style.Button}>X</button>
+         <button onClick={handleFavorite} className={style.kokoro}>{isFav ? '❤️' : '🤍'}</button>
+         <button onClick={() => { onClose(id) }} className={style.Button}>X</button>
          <div>
-            <img src={image} alt='' className={style.imagen}/>
+            <img src={image} alt='' className={style.imagen} />
          </div>
          <div >
-           <Link to={`/detail/${id}`} className={style.nameDiv}> <h2 >{name}</h2> </Link>
+            <Link to={`/detail/${id}`} className={style.nameDiv}> <h2>{name}</h2> </Link>
          </div>
       </div>
    );
@@ -51,9 +51,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      addFav: (character) => { dispatch (addFav(character))},
-      removeFav: (id) => { dispatch (removeFav(id))}
+      addFav: (character) => { dispatch(addFav(character)) },
+      removeFav: (id) => { dispatch(removeFav(id)) }
    }
 };
 
-export default connect (mapStateToProps, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
