@@ -10,13 +10,13 @@ export const reducer = (state=initialState, {type, payload}) => {
         case ADD_FAV:
             return{
                 ...state,
-                myFavorites:[...state.allCharacters, payload],   
-                allCharacters:[...state.allCharacters, payload],
+                myFavorites:[...state.myFavorites, payload],   
+                allCharacters:[...state.myFavorites, payload],
             }
         case REMOVE_FAV:
             return{
                 ...state,
-                myFavorites : state.myFavorites.filter(fav=> fav.id != payload)
+                allCharacters: state.myFavorites.filter(fav=> fav.id != payload)
             }   
         case FILTER:
             let genderFilter = state.allCharacters;

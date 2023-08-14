@@ -24,7 +24,6 @@ function App() {
       if (!id) { window.alert("!Digite ID!"); return };
 
     axios(`https://rickandmortyapi.com/api/character/${id}`)
-   // axios(`http://localhost:3001/rickandmorty/character/${id}`)
       .then(({data}) => {
          if(data.name) {
             setCharacters((oldChars) => [...oldChars, data])
